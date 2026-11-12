@@ -58,6 +58,9 @@ impl<T: Eq + Hash, S: BuildHasher> HashSet<T, S> {
     pub fn reserve(&mut self, additional: usize) {
         self.map.reserve(additional)
     }
+    pub fn try_reserve(&mut self, additional: usize) -> Result<(), super::TryReserveError> {
+        self.map.try_reserve(additional)
+    }
     pub fn shrink_to_fit(&mut self) {
         self.map.shrink_to_fit()
     }
